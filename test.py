@@ -114,7 +114,9 @@ class TechnicalTask(unittest.TestCase):
             self.driver.close()
             self.driver.switch_to_window(self.driver.window_handles[0])
 
-        assert pictures_links == text_from_inbox_message, 'So sad...'
+        assert pictures_links == text_from_inbox_message, '\nLinks from inbox message:\n{}\n' \
+                                                          'is not equal to expected:\n{}\n'\
+            .format(text_from_inbox_message, pictures_links)
 
 
 if __name__ == '__main__':
