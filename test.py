@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime
-from time import sleep, time
+from time import sleep
 import requests
 import unittest
 
@@ -12,11 +12,8 @@ import unittest
 class TechnicalTask(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # cls.login = input('Enter login for Gmail: ') + '@gmail.com'
-        # cls.password = input('Enter password for Gmail: ')
-
-        cls.login = 'vadym.hlybovych.aqa@gmail.com'
-        cls.password = 'QwErTy123456'
+        cls.login = input('Enter login for Gmail: ') + '@gmail.com'
+        cls.password = input('Enter password for Gmail: ')
 
         options = Options()
         options.add_argument('--incognito')
@@ -118,7 +115,6 @@ class TechnicalTask(unittest.TestCase):
             self.driver.switch_to_window(self.driver.window_handles[0])
 
         assert pictures_links == text_from_inbox_message, 'So sad...'
-
 
 
 if __name__ == '__main__':
