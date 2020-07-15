@@ -59,12 +59,14 @@ class TechnicalTask(unittest.TestCase):
         self.driver.switch_to_window(self.driver.window_handles[1])
 
         login_mail_field = '//input[@id="identifierId"]'
+        self.driver.switch_to_default_content()
         self.wait.until(EC.presence_of_element_located((By.XPATH, login_mail_field))).send_keys(self.login)
 
         identifier_button_next = '//div[@id="identifierNext"]'
         self.wait.until(EC.element_to_be_clickable((By.XPATH, identifier_button_next))).click()
 
         password_field = '//input[@name="password"]'
+        self.driver.switch_to_default_content()
         self.wait.until(EC.presence_of_element_located((By.XPATH, password_field))).send_keys(self.password)
 
         next_button_password = '//div[@id="passwordNext"]'
