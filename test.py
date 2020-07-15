@@ -4,7 +4,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime
-from time import sleep
 import requests
 import unittest
 
@@ -62,13 +61,14 @@ class TechnicalTask(unittest.TestCase):
         login_mail_field = '//input[@id="identifierId"]'
         self.wait.until(EC.presence_of_element_located((By.XPATH, login_mail_field))).send_keys(self.login)
 
-        button_next = '//span[contains(text(), "Далее")]/following-sibling::div'
-        self.wait.until(EC.presence_of_element_located((By.XPATH, button_next))).click()
+        identifier_button_next = '//div[@id="identifierNext"]'
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, identifier_button_next))).click()
 
         password_field = '//input[@name="password"]'
         self.wait.until(EC.presence_of_element_located((By.XPATH, password_field))).send_keys(self.password)
-        sleep(3)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, button_next))).click()
+
+        next_button_password = '//div[@id="passwordNext"]'
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, next_button_password))).click()
 
         # Send new mail
         new_mail_button = "//div[contains(text(), 'Написать')]"
